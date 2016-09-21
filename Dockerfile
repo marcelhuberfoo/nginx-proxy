@@ -1,5 +1,19 @@
-FROM nginx:1.11.3
-MAINTAINER Jason Wilder mail@jasonwilder.com
+FROM nginx:1.11.4
+
+MAINTAINER Marcel Huber <marcelhuberfoo@gmail.com>
+
+ARG IMAGE_VERSION
+ARG BUILD_DATE
+ARG VCS_REF
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.docker.dockerfile="Dockerfile" \
+      org.label-schema.name="nginx-proxy" \
+      org.label-schema.url="https://github.com/marcelhuberfoo/nginx-proxy" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/marcelhuberfoo/nginx-proxy" \
+      org.label-schema.version=${IMAGE_VERSION} \
+      org.label-schema.schema-version="1.0"
+ENV IMAGE_VERSION=$IMAGE_VERSION
 
 # Install wget and install/updates certificates
 RUN apt-get update \
