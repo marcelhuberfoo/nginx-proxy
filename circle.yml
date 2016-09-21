@@ -13,7 +13,7 @@ dependencies:
 
 test:
   override:
-    - docker run -it --rm --entrypoint /bin/sh $docker_image -c 'printenv'
+    - . ./build_params.sh && docker run -it --rm --entrypoint /bin/sh $docker_image -c 'printenv'
 
 deployment:
   release:
